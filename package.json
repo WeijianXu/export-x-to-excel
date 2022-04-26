@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WeijianXu/export-to-excel.git"
+    "url": "git+https://github.com/WeijianXu/export-x-to-excel.git"
   },
   "keywords": [
     "table",
@@ -28,9 +28,9 @@
   "author": "William Xu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/WeijianXu/export-to-excel/issues"
+    "url": "https://github.com/WeijianXu/export-x-to-excel/issues"
   },
-  "homepage": "https://github.com/WeijianXu/export-to-excel#readme",
+  "homepage": "https://github.com/WeijianXu/export-x-to-excel#readme",
   "dependencies": {
     "file-saver": "^2.0.2",
     "xlsx": "^0.18.5"
