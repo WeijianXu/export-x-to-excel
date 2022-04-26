@@ -5,11 +5,13 @@ import { Range } from 'xlsx/types/index.d';
  * @param table 表格元素对象
  * @returns 导出Excel所需的数据对象
  */
-export default function generate_table_array(table?: HTMLElement | null): [any[], Range[]] {
+export default function generate_table_array(
+  table?: HTMLElement | null,
+): [(string | number | null)[][], Range[]] {
   if (!table) {
     return [[], []];
   }
-  const out: any[] = [];
+  const out: (string | number | null)[][] = [];
   // 匹配第一个 thead 的所有 tr
   const theadRows = table.querySelector('thead')?.querySelectorAll('tr') || [];
   // 匹配第一个 tbody 的所有 tr
@@ -19,16 +21,16 @@ export default function generate_table_array(table?: HTMLElement | null): [any[]
 
   const ranges: Range[] = [];
   for (let R = 0; R < rows.length; ++R) {
-    const outRow = [];
+    const outRow: (string | number | null)[] = [];
     const row = rows[R];
     const thColumns = row.querySelectorAll('th'); // 表格头部单元格
     const tdColumns = row.querySelectorAll('td'); // 表格主体单元格
     const columns = thColumns && thColumns.length ? thColumns : tdColumns;
     for (let C = 0; C < columns.length; ++C) {
       const cell = columns[C];
-      let colspan = +(cell.getAttribute('colspan') || 1);
-      let rowspan = +(cell.getAttribute('rowspan') || 1);
-      let cellValue: any = cell.innerText || cell.textContent || '';
+      const colspan = +(cell.getAttribute('colspan') || 1);
+      const rowspan = +(cell.getAttribute('rowspan') || 1);
+      let cellValue: string | number | null = cell.innerText || cell.textContent || '';
       // 处理数字，数字太大，不处理成数字
       const cv = cellValue.replaceAll(',', ''); // 处理千分位
       if (cellValue !== '' && cv === (+cv).toString() && +cv < 10000000) {

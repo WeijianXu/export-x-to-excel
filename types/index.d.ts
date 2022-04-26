@@ -8,7 +8,11 @@ export type Range = XlsxAange;
  * @param jsonData 表格主体数据
  * @param title 表格名称
  */
-export declare type export_data_to_excel = (th: any[], jsonData: any[], title?: string) => void;
+export declare type export_data_to_excel = (
+  th: (string | number | null)[],
+  jsonData: (string | number | null)[][],
+  title?: string,
+) => void;
 
 /**
  * 将 `generate_table_array` 获取的数据传入；适用于拼接多个 table
@@ -17,7 +21,7 @@ export declare type export_data_to_excel = (th: any[], jsonData: any[], title?: 
  * @param title 表格名称
  */
 export declare type export_table_array_to_excel = (
-  tableArray: [any[], Range[]],
+  tableArray: [(string | number | null)[][], Range[]],
   title?: string,
 ) => void;
 
@@ -34,4 +38,6 @@ export declare type export_table_to_excel = (id: string, title?: string) => void
  * @param table 表格元素对象
  * @returns 导出Excel所需的数据对象
  */
-export declare type generate_table_array = (table?: HTMLElement | null) => [any[], Range[]];
+export declare type generate_table_array = (
+  table?: HTMLElement | null,
+) => [(string | number | null)[][], Range[]];

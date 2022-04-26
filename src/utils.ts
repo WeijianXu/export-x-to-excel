@@ -7,8 +7,8 @@ export function datenum(v: string, date1904 = false) {
   return (epoch - new Date(Date.UTC(1899, 11, 30)).getTime()) / (24 * 60 * 60 * 1000);
 }
 
-export function sheet_from_arrays(data: [][]) {
-  const ws: Record<string, any> = {};
+export function sheet_from_arrays(data: (string | number | null)[][]) {
+  const ws: Record<string, unknown> = {};
   const range = { s: { c: 10000000, r: 10000000 }, e: { c: 0, r: 0 } };
   for (let R = 0; R != data.length; R += 1) {
     for (let C = 0; C != data[R].length; C += 1) {
@@ -24,7 +24,7 @@ export function sheet_from_arrays(data: [][]) {
       if (range.e.c < C) {
         range.e.c = C;
       }
-      const cell: CellObject = { t: 's', v: data[R][C] };
+      const cell: CellObject = { t: 's', v: data[R][C] || undefined };
       if (cell.v == null) continue;
       const cell_ref = XLSX.utils.encode_cell({ c: C, r: R });
 
@@ -48,9 +48,9 @@ export function sheet_from_arrays(data: [][]) {
 }
 
 export function s2ab(s: string) {
-  var buf = new ArrayBuffer(s.length);
-  var view = new Uint8Array(buf);
-  for (var i = 0; i != s.length; ++i) {
+  const buf = new ArrayBuffer(s.length);
+  const view = new Uint8Array(buf);
+  for (let i = 0; i != s.length; ++i) {
     view[i] = s.charCodeAt(i) & 0xff;
   }
   return buf;

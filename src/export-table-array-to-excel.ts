@@ -10,16 +10,16 @@ import { sheet_from_arrays, s2ab } from './utils';
  * @param title 表格名称
  */
 export default function export_table_array_to_excel(
-  tableArray: [any[], Range[]],
+  tableArray: [(string | number | null)[][], Range[]],
   title = 'export-table',
 ) {
-  var ranges = tableArray[1];
+  const ranges = tableArray[1];
 
   /* original data */
-  var data = tableArray[0];
-  var ws_name = 'SheetJS';
+  const data = tableArray[0];
+  const ws_name = 'SheetJS';
   // console.log(JSON.stringify(tableArray));
-  var wb = XLSX.utils.book_new(),
+  const wb = XLSX.utils.book_new(),
     ws = sheet_from_arrays(data);
 
   /* add ranges to worksheet */
@@ -30,6 +30,6 @@ export default function export_table_array_to_excel(
   wb.SheetNames.push(ws_name);
   wb.Sheets[ws_name] = ws;
 
-  var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: false, type: 'binary' });
+  const wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: false, type: 'binary' });
   saveAs(new Blob([s2ab(wbout)], { type: 'application/octet-stream' }), title + '.xlsx');
 }
