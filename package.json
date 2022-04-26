@@ -10,6 +10,11 @@
     "test": "jest",
     "prepublishOnly": "npm run build"
   },
+  "typings": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WeijianXu/export-to-excel.git"
