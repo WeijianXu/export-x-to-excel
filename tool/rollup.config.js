@@ -54,14 +54,14 @@ const esConfig = {
   ...baseConfig,
   output: {
     format: 'esm',
-    file: 'dist/export-to-excel.es.js',
+    file: 'dist/export-x-to-excel.es.js',
     exports: 'named',
     // dir: 'dist/es',
     // assetFileNames: '[name][extname]',
   },
   plugins: [
     // 清除上一次编译文件
-    del({ targets: ['dist/export-to-excel.es.js'] }),
+    del({ targets: ['dist/export-x-to-excel.es.js'] }),
     // del({ targets: ['dist/es/*'] }),
     ...pluginsPre,
 
@@ -75,15 +75,15 @@ const cjsConfig = {
   ...baseConfig,
   output: {
     // compact: true,
-    file: 'dist/export-to-excel.cjs.js',
+    file: 'dist/export-x-to-excel.cjs.js',
     format: 'cjs',
-    name: 'export-to-excel',
+    name: 'export-x-to-excel',
     exports: 'named',
     globals,
   },
   plugins: [
     // 清除上一次编译文件
-    del({ targets: 'dist/export-to-excel.cjs.js' }),
+    del({ targets: 'dist/export-x-to-excel.cjs.js' }),
     ...pluginsPre,
 
     // 清除多余空格、空行等
@@ -102,16 +102,16 @@ const unpkgConfig = {
   ...baseConfig,
   output: {
     // compact: true,
-    file: 'dist/export-to-excel.min.js',
+    file: 'dist/export-x-to-excel.min.js',
     format: 'iife',
-    name: 'export-to-excel',
+    name: 'export-x-to-excel',
     exports: 'named',
     extend: true,
     globals,
   },
   plugins: [
     // 清除上一次编译文件
-    del({ targets: 'dist/export-to-excel.min.js' }),
+    del({ targets: 'dist/export-x-to-excel.min.js' }),
     ...pluginsPre,
 
     // 清除多余空格、空行等
