@@ -1,6 +1,6 @@
-import { Range } from 'xlsx/types/index.d';
+import { Range as XlsxAange } from 'xlsx/types/index.d';
 
-export type Range = Range;
+export type Range = XlsxAange;
 /**
  * 按照传入的数据格式导出Excel
  *
