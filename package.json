@@ -2,9 +2,9 @@
   "name": "export-x-to-excel",
   "version": "0.1.2",
   "description": "The front-end implementation of exporting a table to an Excel file.",
-  "main": "dist/export-to-excel.cjs.js",
-  "module": "dist/export-to-excel.es.js",
-  "unpkg": "dist/export-to-excel.min.js",
+  "main": "dist/export-x-to-excel.cjs.js",
+  "module": "dist/export-x-to-excel.es.js",
+  "unpkg": "dist/export-x-to-excel.min.js",
   "scripts": {
     "build": "rollup --config tool/rollup.config.js",
     "test": "jest",
