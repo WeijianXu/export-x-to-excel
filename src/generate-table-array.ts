@@ -1,5 +1,10 @@
 import { Range } from 'xlsx/types/index.d';
 
+/**
+ * 根据表格元素Table生成导出Excel所需的数据对象
+ * @param table 表格元素对象
+ * @returns 导出Excel所需的数据对象
+ */
 export default function generate_table_array(table?: HTMLElement | null): [any[], Range[]] {
   if (!table) {
     return [[], []];
