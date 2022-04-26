@@ -54,15 +54,15 @@ const esConfig = {
   ...baseConfig,
   output: {
     format: 'esm',
-    // file: 'dist/export-to-excel.es.js',
+    file: 'dist/export-to-excel.es.js',
     exports: 'named',
-    dir: 'dist/es',
-    assetFileNames: '[name][extname]',
+    // dir: 'dist/es',
+    // assetFileNames: '[name][extname]',
   },
   plugins: [
     // 清除上一次编译文件
-    // del({ targets: ['dist/export-to-excel.es.js', 'dist/assets/*'] }),
-    del({ targets: ['dist/es/*'] }),
+    del({ targets: ['dist/export-to-excel.es.js'] }),
+    // del({ targets: ['dist/es/*'] }),
     ...pluginsPre,
 
     // 清除多余空格、空行等
