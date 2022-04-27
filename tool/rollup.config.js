@@ -11,8 +11,9 @@ import json from '@rollup/plugin-json';
 
 // const glob = require('glob');
 const { pathJoin } = require('./utils');
+const esEntries = require('./es-entries.json');
 
-const baseExtensions = ['.js', '.jsx', '.ts', '.tsx'/* , '.vue' */];
+const baseExtensions = ['.ts', '.tsx', '.js', '.jsx'/* , '.vue' */];
 
 const baseConfig = {
   input: 'src/index.ts',
@@ -40,7 +41,7 @@ const pluginsPre = [
       },
     ],
     customResolver: resolve({
-      extensions: [...baseExtensions, '.sass', '.scss'],
+      extensions: [...baseExtensions],
     }),
   }),
   // 解析 typescript 语法
@@ -52,17 +53,18 @@ const pluginsPre = [
 
 const esConfig = {
   ...baseConfig,
+  input: esEntries,
   output: {
     format: 'esm',
-    file: 'dist/export-x-to-excel.es.js',
+    // file: 'dist/export-x-to-excel.es.js',
     exports: 'named',
-    // dir: 'dist/es',
+    dir: 'dist/es',
     // assetFileNames: '[name][extname]',
   },
   plugins: [
     // 清除上一次编译文件
-    del({ targets: ['dist/export-x-to-excel.es.js'] }),
-    // del({ targets: ['dist/es/*'] }),
+    // del({ targets: ['dist/export-x-to-excel.es.js'] }),
+    del({ targets: ['dist/es/*'] }),
     ...pluginsPre,
 
     // 清除多余空格、空行等

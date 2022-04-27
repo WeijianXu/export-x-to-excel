@@ -32,7 +32,7 @@ export default function generate_table_array(
       const rowspan = +(cell.getAttribute('rowspan') || 1);
       let cellValue: string | number | null = cell.innerText || cell.textContent || '';
       // 处理数字，数字太大，不处理成数字
-      const cv = cellValue.replaceAll(',', ''); // 处理千分位
+      const cv = cellValue.replace(/,/g, ''); // 处理千分位
       if (cellValue !== '' && cv === (+cv).toString() && +cv < 10000000) {
         cellValue = +cv;
       }
