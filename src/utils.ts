@@ -24,7 +24,8 @@ export function sheet_from_arrays(data: (string | number | null)[][]) {
       if (range.e.c < C) {
         range.e.c = C;
       }
-      const cell: CellObject = { t: 's', v: data[R][C] || undefined };
+      const v = data[R][C] !== null && data[R][C] !== undefined ? data[R][C] : null;
+      const cell: CellObject = { t: 's', v };
       if (cell.v == null) continue;
       const cell_ref = XLSX.utils.encode_cell({ c: C, r: R });
 
