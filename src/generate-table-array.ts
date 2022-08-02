@@ -39,6 +39,8 @@ export default function generate_table_array(
         } else {
           cellValue = cv; // 数值太大，仍然显示成字符串
         }
+      } else {
+        cellValue = cellValue.trim(); // 去掉首尾空格
       }
 
       //Skip ranges
