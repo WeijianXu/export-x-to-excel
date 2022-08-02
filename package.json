@@ -1,6 +1,6 @@
 {
   "name": "export-x-to-excel",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "The front-end implementation of exporting a table to an Excel file.",
   "main": "dist/export-x-to-excel.cjs.js",
   "module": "dist/es/index.js",
