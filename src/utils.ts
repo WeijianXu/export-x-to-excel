@@ -7,7 +7,7 @@ export function datenum(v: string, date1904 = false) {
   return (epoch - new Date(Date.UTC(1899, 11, 30)).getTime()) / (24 * 60 * 60 * 1000);
 }
 
-export function sheet_from_arrays(data: (string | number | null)[][]) {
+export function sheet_from_arrays(data: (string | number | boolean | Date)[][]) {
   const ws: Record<string, unknown> = {};
   const range = { s: { c: 10000000, r: 10000000 }, e: { c: 0, r: 0 } };
   for (let R = 0; R != data.length; R += 1) {
@@ -24,9 +24,9 @@ export function sheet_from_arrays(data: (string | number | null)[][]) {
       if (range.e.c < C) {
         range.e.c = C;
       }
-      const v = data[R][C] !== null && data[R][C] !== undefined ? data[R][C] : null;
+      const v = data[R][C] !== null && data[R][C] !== undefined ? data[R][C] : undefined;
       const cell: CellObject = { t: 's', v };
-      if (cell.v == null) continue;
+      if (cell.v === undefined) continue;
       const cell_ref = XLSX.utils.encode_cell({ c: C, r: R });
 
       if (typeof cell.v === 'number') {
