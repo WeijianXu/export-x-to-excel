@@ -1,5 +1,8 @@
 import { Range as XlsxAange } from 'xlsx/types/index.d';
 
+// 单元格元素数据类型
+export type CellValue = string | number | boolean | Date | undefined;
+
 export type Range = XlsxAange;
 /**
  * 按照传入的数据格式导出Excel
